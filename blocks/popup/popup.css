@@ -21,3 +21,7 @@
   right: 0;
   z-index: 10;
 }
+
+.popup_is-opened {
+  display:inline-block;
+}
