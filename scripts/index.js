@@ -2,13 +2,44 @@
 const CardTemplate = document.querySelector("#card-template").content;
 const placeBlock = document.querySelector(".places__list");
 
+//popups
+const profilePopup = document.querySelector(".popup_type_edit");
+const cardPopup = document.querySelector(".popup_type_new-card");
+const imagePopup = document.querySelector(".popup_type_image");
+
 // @todo: Функция создания карточки
 function CreateCard(name, link){
     const CardPattern = CardTemplate.querySelector(".places__item").cloneNode(true);
     CardPattern.querySelector(".card__title").textContent = name;
     CardPattern.querySelector(".card__image").src = link;
+    
+    //like card
+    const likeButton = CardPattern.querySelector(".card__like-button");
+    likeButton.addEventListener("click", function (event){
+        likeButton.classList.toggle("card__like-button_is-active");
+    });
+
+    //delete card
+    const deleteButton = CardPattern.querySelector(".card__delete-button");
+    deleteButton.addEventListener('click', function(event){
+        CardPattern.remove();
+    });
+
+    //image popup
+    const imageClick = CardPattern.querySelector(".card__image");
+    imageClick.addEventListener("click", function (event){
+        imagePopup.querySelector(".popup__caption").textContent = name;
+        imagePopup.querySelector(".popup__image").src = link;   
+        const closeButton = imagePopup.querySelector(".popup__close");
+        closeButton.addEventListener('click', function (event){
+            closeModal(imagePopup);
+        });
+        openModal(imagePopup);
+    });
+
     placeBlock.append(CardPattern);
     return CardPattern;
+
 }
 
 // @todo: Вывести карточки на страницу
@@ -16,15 +47,12 @@ initialCards.forEach(card => {
     CreateCard(card.name, card.link);
 });
 
-//popups
-const profilePopup = document.querySelector(".popup_type_edit");
-const cardPopup = document.querySelector(".popup_type_new-card");
-const imagePopup = document.querySelector(".popup_type_image");
-
 //open popup
 function openModal(popup) {      
+    popup.classList.add("popup_is-animated");
+    popup.querySelector(".popup__content").classList.add('popup_is-animated');
     popup.classList.add('popup_is-opened');
-    popup.querySelector(".popup__content").classList.add('popup_is-opened');
+    popup.querySelector(".popup__content").classList.add('popup_is-opened');   
 }
 
 //edit profile button
@@ -94,6 +122,5 @@ function handleCardFormSubmit(evt) {
 cardForm.addEventListener('submit', handleCardFormSubmit); 
 
 
-// @todo: Функция удаления карточки
 
 
