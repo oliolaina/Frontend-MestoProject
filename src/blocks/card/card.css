@@ -1,0 +1,67 @@
+@import url('./__description/card__description.css');
+@import url('./__image/card__image.css');
+@import url('./__like-button/card__like-button.css');
+@import url('./__like-button/_is-active/card__like-button_is-active.css');
+@import url('./__delete-button/card__delete-button.css');
+@import url('./__title/card__title.css');
+
+.card {
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.div_like {
+  display: flex;
+  flex-direction: column;
+}
+
+.like_counter{
+  margin: 5px auto 0;
+  text-align: center;
+  font-size: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.avatar_svg {
+  position: absolute;
+  display: none;
+  z-index: 2;
+  top:37.5%;
+  left:37.5%;
+  width:25%;
+  height:25%;
+  opacity:100%;
+}
+
+.unhidden{
+  display:block;
+}
+
+.profile__image{
+  position:relative;
+  max-width:150px;
+  max-height: 150px;
+  background-size: contain;
+}
+
+.avatar_black{
+  display: none;
+  background-color: rgb(0,0,0,0.7);
+  position: absolute;
+  z-index: 1;
+  width:100%;
+  height:100%;
+  border-radius: 50%;
+}
+
+
+.button_avatar {
+ position: relative;
+}
